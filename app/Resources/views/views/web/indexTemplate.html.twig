@@ -1,0 +1,105 @@
+{% macro startCmsElement(type, subtype, value) %}
+<div class="cms-element" onClick="return selectMe('{{ type }}', '{{ subtype }}', '{{ value }}');" data-toggle="modal"
+     data-target="modal">
+    {% endmacro startCmsElement %}
+    {% macro endCmsElement() %}
+</div>
+{% endmacro endCmsElement %}
+
+{% macro navLink(subtype, href, innerText) %}
+    {% import _self as forms %}
+    {{ forms.startCmsElement("NAV_LINK", subtype, innerText) }}
+    <li class="nav-item">
+        <a class='nav-link admin-nav-link {% if path(app.request.attributes.get("_route"),
+        app.request.attributes.get("_route_params")) == "/admin/" ~ href %}active{% endif %}'
+           href="/admin/{{ href }}">{{ innerText }}</a>
+    </li>
+    {{ forms.endCmsElement() }}
+{% endmacro navLink %}
+
+{% block head %}
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="miro-gradnja" content="">
+    <meta name="Mihret Joldic" content="">
+    <link rel="icon" href="{{ asset("static/images/favicon/b242ff09-580a-4269-a088-8471ad983149.ico") }}">
+
+    <title>webPageTitleTarget</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset("css/vendor/dev/bootstrap.css") }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset("/css/vendor/dev/font-awesome.css") }}">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset("css/style.css") }}" rel="stylesheet">
+</head>
+{% endblock head %}
+
+{%  block header %}
+{% import _self as forms %}
+
+<body>
+<script src="{{ asset("js/helper/constants.js") }}"></script>
+<nav class="navbar sticky-top navbar-expand-lg bg-light">
+    {{ forms.startCmsElement("NAV_BRAND", "Logo") }}
+    <a class="navbar-brand" href="/admin"><img src="{{ asset
+        ("static/images/logo/logo.png") }}">&nbsp;&nbsp;&nbsp;</a>
+    {{ forms.endCmsElement() }}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            navLinksTarget
+        </ul>
+
+    </div>
+    <div class="pull-right" >
+        <a class='nav-link admin-nav-link' style="color: grey;" href="#">
+            <i class="fa fa-cog fa-4x" onclick="return selectMe('SETTINGS', 'Podešavanja')" aria-hidden="true"></i>
+        </a>
+    </div>
+</nav>
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock header %}
+
+{% block body %}
+{% endblock body %}
+
+{% block footer %}
+    {% import _self as forms %}
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        {{ forms.startCmsElement() }}
+        <small class="text-muted">footerTarget</small>
+        {{ forms.endCmsElement() }}
+    </nav>
+{% endblock footer %}
+
+{%  block js %}
+<script src="{{ asset("js/vendor/dev/jquery.js") }}"></script>
+<script src="{{ asset("js/vendor/dev/popper.js") }}"></script>
+<script src="{{ asset("js/vendor/dev/bootstrap.js") }}"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src={{ asset("js/vendor/ie10-viewport-bug-workaround.js") }}></script>
+<script src="{{ asset("js/script.js") }}"></script>
+</body>
+</html>
+{% endblock js %}

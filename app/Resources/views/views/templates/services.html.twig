@@ -1,0 +1,20 @@
+{#web {% extends "views/web/base.html.twig"%} web#}
+{#cms {% extends "views/cms/baseCms.html.twig"%} cms#}
+{% block body %}
+    {%  import "includes/includes/cms/macro.html.twig" as forms %}
+    <div class="container-fluid content">
+        <div class="row">
+            <div class="col-lg-3">
+                <nav id="sidebar" class="navbar navbar-light">
+                    <nav class="nav ">
+__insertSidebar__
+                    </nav>
+                </nav>
+            </div>
+            <div class="col-lg-7">
+__insertJumbotron__
+                {#cms <a href="/cms/usluge/dodaj/"><button class="btn btn-primary btn-lg">+</button></a> cms#}
+            </div>
+        </div>
+    </div>
+{%  endblock body %}

@@ -1,0 +1,161 @@
+{#web {% extends "views/web/base.html.twig"%} web#}
+ {% extends "views/cms/baseCms.html.twig"%} 
+{% block body %}
+    {%  import "includes/includes/cms/macro.html.twig" as forms %}
+    <div class="container">
+        <div class="modal" id="carouselModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content" >
+                    <div class="modal-body">
+                        <div id="carouselIndicator" class="carousel slide">
+                            <ol class="carousel-indicators">
+<li class="active"></li><li></li><li></li><li></li><li></li><li></li><li></li>
+                            </ol>
+                            <div class="carousel-inner">
+<div class="carousel-item active">
+    <img class="d-block w-100"
+         src="{{ asset("static/images/all/f976c8f3-0328-4a9a-844f-09dd6a8c6eae.jpg") }}">
+    <div class="carousel-caption d-none d-md-block">
+        <p></p>
+    </div>
+</div>
+<div class="carousel-item ">
+    <img class="d-block w-100"
+         src="{{ asset("static/images/all/55f85713-7f4e-4e4c-b965-f05c3c2c9bec.jpg") }}">
+    <div class="carousel-caption d-none d-md-block">
+        <p>Text opisa</p>
+    </div>
+</div>
+<div class="carousel-item ">
+    <img class="d-block w-100"
+         src="{{ asset("static/images/all/deee8421-501e-450d-9fcb-8700ce8ff514.jpg") }}">
+    <div class="carousel-caption d-none d-md-block">
+        <p>Text opisa</p>
+    </div>
+</div>
+<div class="carousel-item ">
+    <img class="d-block w-100"
+         src="{{ asset("static/images/all/c8f17771-1807-40ef-9cf4-cca672c9c163.jpg") }}">
+    <div class="carousel-caption d-none d-md-block">
+        <p>Text opisa</p>
+    </div>
+</div>
+<div class="carousel-item ">
+    <img class="d-block w-100"
+         src="{{ asset("static/images/all/4ca72b75-f0ac-4862-a450-1de60b1b7c6f.jpg") }}">
+    <div class="carousel-caption d-none d-md-block">
+        <p>Text opisa</p>
+    </div>
+</div>
+<div class="carousel-item ">
+    <img class="d-block w-100"
+         src="{{ asset("static/images/all/34195499-a9f5-4aae-8a74-35c4c2b3b112.jpg") }}">
+    <div class="carousel-caption d-none d-md-block">
+        <p>Text opisa</p>
+    </div>
+</div>
+<div class="carousel-item ">
+    <img class="d-block w-100"
+         src="{{ asset("static/images/all/d1249ce5-be0a-4de1-b7ac-1f3e826ca656.jpg") }}">
+    <div class="carousel-caption d-none d-md-block">
+        <p>Text opisa</p>
+    </div>
+</div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselIndicator" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Nazad</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselIndicator" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Naprijed</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>asfasf</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="my-3">adsgsafg</h3>
+                <p>                        asfas</p>
+                
+            </div>
+            <div class="col-md-8" data-toggle="modal" data-target="#carouselModal"
+                 style="cursor: hand; cursor: pointer;">
+                <img  data-target="#carouselIndicator" data-slide-to="0"
+                    class="img-fluid" src="{{ asset("static/images/all/f976c8f3-0328-4a9a-844f-09dd6a8c6eae.jpg") }}">
+        </div>
+        </div>
+     <div style="margin-top: 50px;" class="row">
+         
+<div class="col-sm-6 col-lg-3" data-toggle="modal" data-target="#carouselModal"
+     style="cursor: hand; cursor: pointer;">
+    <div data-target="#carouselIndicator" data-slide-to="1">
+        <img class="card-img-top" src="{{ asset("static/images/all/55f85713-7f4e-4e4c-b965-f05c3c2c9bec.jpg") }}">
+        <div class="card-body">
+        </div>
+        <div class="card-footer" style="background: none; border: none;">
+            <p>Text opisa</p>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-lg-3" data-toggle="modal" data-target="#carouselModal"
+     style="cursor: hand; cursor: pointer;">
+    <div data-target="#carouselIndicator" data-slide-to="2">
+        <img class="card-img-top" src="{{ asset("static/images/all/deee8421-501e-450d-9fcb-8700ce8ff514.jpg") }}">
+        <div class="card-body">
+        </div>
+        <div class="card-footer" style="background: none; border: none;">
+            <p>Text opisa</p>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-lg-3" data-toggle="modal" data-target="#carouselModal"
+     style="cursor: hand; cursor: pointer;">
+    <div data-target="#carouselIndicator" data-slide-to="3">
+        <img class="card-img-top" src="{{ asset("static/images/all/c8f17771-1807-40ef-9cf4-cca672c9c163.jpg") }}">
+        <div class="card-body">
+        </div>
+        <div class="card-footer" style="background: none; border: none;">
+            <p>Text opisa</p>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-lg-3" data-toggle="modal" data-target="#carouselModal"
+     style="cursor: hand; cursor: pointer;">
+    <div data-target="#carouselIndicator" data-slide-to="4">
+        <img class="card-img-top" src="{{ asset("static/images/all/4ca72b75-f0ac-4862-a450-1de60b1b7c6f.jpg") }}">
+        <div class="card-body">
+        </div>
+        <div class="card-footer" style="background: none; border: none;">
+            <p>Text opisa</p>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-lg-3" data-toggle="modal" data-target="#carouselModal"
+     style="cursor: hand; cursor: pointer;">
+    <div data-target="#carouselIndicator" data-slide-to="5">
+        <img class="card-img-top" src="{{ asset("static/images/all/34195499-a9f5-4aae-8a74-35c4c2b3b112.jpg") }}">
+        <div class="card-body">
+        </div>
+        <div class="card-footer" style="background: none; border: none;">
+            <p>Text opisa</p>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-lg-3" data-toggle="modal" data-target="#carouselModal"
+     style="cursor: hand; cursor: pointer;">
+    <div data-target="#carouselIndicator" data-slide-to="6">
+        <img class="card-img-top" src="{{ asset("static/images/all/d1249ce5-be0a-4de1-b7ac-1f3e826ca656.jpg") }}">
+        <div class="card-body">
+        </div>
+        <div class="card-footer" style="background: none; border: none;">
+            <p>Text opisa</p>
+        </div>
+    </div>
+</div>
+     </div>
+{%  endblock body %}

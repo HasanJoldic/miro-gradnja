@@ -1,0 +1,39 @@
+{% macro cmsElement() %}
+    <div class="cms-element" data-toggle="modal" data-target="cms-modal">
+{% endmacro cmsElement %}
+{% macro cmsElementThumbnail() %}
+    <div class="cms-element col-lg-2" data-toggle="modal" data-target="cms-modal"
+{% endmacro cmsElementThumbnail %}
+{% macro cmsElementEndTag() %}
+</div>
+{% endmacro cmsElementEndTag %}
+
+{% macro navLinkCms(subtype, href, innerText) %}
+        <li class="nav-item">
+            <a class='nav-link
+                {% if path(app.request.attributes.get("_route"),
+            app.request.attributes.get("_route_params")) == "/cms/" ~ href ~ "/" %}
+                    active
+                {% elseif path(app.request.attributes.get("_route"),
+app.request.attributes.get("_route_params")) == "/cms/" ~ href %}
+                    active
+                {% endif %}'
+               href="/cms/{{ href }}">{{ innerText|trim("'")}}</a>
+        </li>
+{% endmacro navLinkCms %}
+
+
+{% macro navLink(subtype, href, innerText) %}
+    <li class="nav-item">
+        <a class='nav-link
+            {% if path(app.request.attributes.get("_route"),
+        app.request.attributes.get("_route_params")) == "/" ~ href ~ "/" %}
+                active
+            {% elseif path(app.request.attributes.get("_route"),
+    app.request.attributes.get("_route_params")) == "/" ~ href %}
+                active
+            {% endif %}'
+           href="/{{ href }}">{{ innerText|trim("'")}}
+        </a>
+    </li>
+{% endmacro navLink %}

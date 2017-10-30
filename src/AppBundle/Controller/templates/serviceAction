@@ -1,0 +1,17 @@
+    /**
+     * @Route("/usluge/__insertUrl__/")
+     * @param Request $request
+     */
+
+    public function web__insertActionName__Action(Request $request) {
+        return $this -> render("views/web/services/__insertActionName__.html.twig");
+    }
+
+    /**
+     * @Route("/cms/usluge/__insertUrl__/")
+     * @param Request $request
+     */
+
+    public function cms__insertActionName__Action(Request $request) {
+        return $this -> render("views/cms/services/__insertActionName__.html.twig");
+    }

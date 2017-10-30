@@ -1,0 +1,84 @@
+{% extends"views/cms/baseCms.html.twig" %}
+{% block body %}
+    {%  import "includes/includes/cms/macro.html.twig" as forms %}
+        <form enctype="multipart/form-data" method="post" action="/cms/usluge/dodaj-novu" id="services-form">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Naslov"
+                               name="title" required="required">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="url"
+                               name="url" required="required">
+                    </div>
+                </div> <!-- col-lg-4 -->
+            </div> <!-- row -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Naslov opisa"
+                               name="description-title" required="required">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="6" placeholder="Tekst opisa"
+                                  name="description" required="required">
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" placeholder="Naslov liste"
+                               name="list-title">
+                    </div>
+                    <div class="listElementsParent">
+                        <div class="listElements input-group">
+                            <div style="width: 20%;"></div>
+                            <input class="form-control" name="list-elements[]" type="text"
+                                   placeholder="Element liste" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-add" type="button">
+                                    <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div> <!-- col-lg-4 -->
+                <div class="col-lg-8">
+                    <div class="form-group file-container">
+                        <input class="form-control" type="file" onchange="onUploadThumbnail(event)"
+                               id="file-input" accept="image/*">
+                        {{ forms.cmsElement() }}
+                        <div class="onClickDiv" onClick='return changeMainImage("main-image");'>
+                            <img class="img-fluid" id="main-image"
+                                 src="{{ asset("static/images/placeholder/grey.png")}}">
+                        </div>
+                        {{ forms.cmsElementEndTag() }}
+
+                    </div>
+                </div> <!-- col-lg-8 -->
+            </div> <!-- row -->
+            <div class="row" id="thumbnail-container">
+                <div class="card col-lg-3" style="display: none" id="thumbnail-image">
+                    {{ forms.cmsElement() }}
+                    <div class="onClickDiv" onClick="return changeThumbnail('uid');">
+                        <img class="card-img-top">
+                        <div class="card-body">
+                        </div>
+                        <div class="card-footer" style="background: none; border: none;">
+                            <p>Text opisa</p>
+                        </div>
+                    </div>
+                </div>
+                {{ forms.cmsElementEndTag() }}
+
+            </div> <!-- row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <button type="submit" onclick="return isMainImageUploaded(event)" class="btn btn-primary pull-right">Zapamtiti</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+    <!-- /.container -->
+{%  endblock body %}

@@ -1,0 +1,45 @@
+{#web {% extends "views/web/base.html.twig"%} web#}
+{#cms {% extends "views/cms/baseCms.html.twig"%} cms#}
+{% block body %}
+    {%  import "includes/includes/cms/macro.html.twig" as forms %}
+    <div class="container">
+    <div class="modal fade" id="carouselModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" >
+                <div class="modal-body">
+                    <div id="carouselIndicator" class="carousel slide">
+                        <ol class="carousel-indicators">
+__insertCarouselIndicators__
+                        </ol>
+                        <div class="carousel-inner">
+__insertCarouselItems__
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselIndicator" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Nazad</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselIndicator" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Naprijed</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#cms <form method="POST" enctype="multipart/form-data" autocomplete="off" action="/cms/set-cms-soft/"
+          onsubmit="onSubmitAllGalleryImages(event)" id="galleryImagesForm"> cms#}
+    {#cms <input type="file" id="galleryImagesInputField" hidden="hidden"
+           onchange="onSubmitGalleryImageAndCreateThumbnail(event)"> cms#}
+    {#cms <input id="gallery-images-text-input" type="text" hidden="hidden" > cms#}
+
+    <div class="container">
+    <div style="margin-top: 50px;" class="row">
+__insertImageCards__
+
+
+    {#cms <button style:"style="margin-top: 100px;" type="submit" id="submit"
+    class="btn btn-primary pull-right">Zapamti promjene</button></div>
+    cms#}
+{#cms </form> cms#}
+{%  endblock body %}

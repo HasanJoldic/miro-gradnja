@@ -1,0 +1,19 @@
+{#web {% extends "views/web/base.html.twig"%} web#}
+{#cms {% extends "views/cms/baseCms.html.twig"%} cms#}
+{% block body %}
+    {#cms {%  import "includes/includes/cms/macro.html.twig" as forms %} cms#}
+    <div style="text-align: center;" class="container col-lg-6" >
+        {#cms {{ forms.cmsElement() }} cms#}
+        {#cms <div onClick='return selectMe("ABOUT_US_TITLE", "Naslov");'> cms#}
+            <h2>__insertAboutUsTitle__</h2>
+        {#cms </div> cms#}
+        {#cms {{ forms.cmsElementEndTag() }} cms#}
+        {#cms {{ forms.cmsElement() }} cms#}
+        {#cms <div onClick='return selectMe("ABOUT_US_TEXT", "Tekst");'> cms#}
+            <p>
+                __insertAboutUsText__
+            </p>
+        {#cms </div> cms#}
+        {#cms {{ forms.cmsElementEndTag() }} cms#}
+    </div>
+{% endblock body %}

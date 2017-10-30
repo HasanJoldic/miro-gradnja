@@ -1,0 +1,47 @@
+{#web {% extends "views/web/base.html.twig"%} web#}
+{#cms {% extends "views/cms/baseCms.html.twig"%} cms#}
+{% block body %}
+    {%  import "includes/includes/cms/macro.html.twig" as forms %}
+    <div class="container">
+        <div class="modal" id="carouselModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content" >
+                    <div class="modal-body">
+                        <div id="carouselIndicator" class="carousel slide">
+                            <ol class="carousel-indicators">
+__insertCarouselIndicators__
+                            </ol>
+                            <div class="carousel-inner">
+__insertCarouselItems__
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselIndicator" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Nazad</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselIndicator" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Naprijed</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1>__insertTitle__</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="my-3">__insertDescriptionTitle__</h3>
+                <p>__insertDescription__</p>
+                __insertList__
+            </div>
+            <div class="col-md-8" data-toggle="modal" data-target="#carouselModal"
+                 style="cursor: hand; cursor: pointer;">
+                <img  data-target="#carouselIndicator" data-slide-to="0"
+                    class="img-fluid" src="{{ asset("static/images/all/__insertMainImage__.jpg") }}">
+        </div>
+        </div>
+     <div style="margin-top: 50px;" class="row">
+         __insertImageCards__
+     </div>
+{%  endblock body %}

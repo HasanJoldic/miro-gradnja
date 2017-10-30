@@ -1,0 +1,18 @@
+{#cms {{ forms.cmsElement() }} cms#}
+{#cms <div onClick='return selectMe("JUMBOTRON", "Promijeni url ili izbrisi element",
+    "__insertUrl__", "__insertTitle__", true);'> cms#}
+<div id="__insertScrollspyId__">
+    <div class="jumbotron">
+        <h1>__insertTitle__</h1>
+        <img style="max-height: 800px; max-width: 100%"
+             src="{{ asset("static/images/all/__insertMainImage__.jpg") }}">
+        <p class="lead">
+            <a style="margin: -100px 0 0 20px;" class="btn btn-primary btn-lg"
+               href="{#cms/cmscms#}/usluge/__insertUrl__"
+               role="button">Procitaj vise
+            </a>
+        </p>
+    </div>
+</div>
+{#cms </div> cms#}
+{#cms {{ forms.cmsElementEndTag() }} cms#}

@@ -1,0 +1,74 @@
+{% block head %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="miro gradnja" content="">
+        <meta name="Mihret Joldic" content="">
+        <link rel="icon" href="{{ asset("static/images/all/" ~ "90e08915-c043-4184-98c9-eb3904a3dc76" ~ ".ico") }}">
+
+        <title>Miro Gradnja</title>
+
+        <link href="{{ asset("css/vendor/dev/bootstrap.css") }}" rel="stylesheet">
+        <link href="{{ asset("css/vendor/dev/font-awesome.css") }}" rel="stylesheet">
+        <link href="{{ asset("css/style.css") }}" rel="stylesheet">
+    </head>
+    {%  import "includes/includes/cms/macro.html.twig" as forms %}
+<body>
+    <script src="{{ asset("js/helper/constants.js") }}"></script>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+         {{ forms.cmsElement() }} 
+         <div onClick='return selectMe("BRAND", "Logo");'> 
+        <a class="navbar-brand" href="/cms">
+            <img src="{{ asset("static/images/all/" ~ "ded7c305-ed0d-4b10-808b-98d6370e09f6" ~ ".png") }}" height="80">
+        </a>
+         </div>  
+         {{ forms.cmsElementEndTag() }} 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                {#web {{ forms.navLink("index", "", "Naslovna") }} web#}
+                {#web {{ forms.navLink("services", "usluge", "Usluge") }} web#}
+                {#web {{ forms.navLink("gallery", "galerija", "Galerija") }} web#}
+                {#web {{ forms.navLink("contact", "kontakt", "Kontakt") }}web#}
+                {#web {{ forms.navLink("aboutUs", "o-nama", "O nama") }} web#}
+
+                 {{ forms.navLinkCms("index", "", "Naslovna") }} 
+                 {{ forms.navLinkCms("services", "usluge", "Usluge") }} 
+                 {{ forms.navLinkCms("gallery", "galerija", "Galerija") }} 
+                 {{ forms.navLinkCms("contact", "kontakt", "Kontakt") }}
+                 {{ forms.navLinkCms("aboutUs", "o-nama", "O nama") }} 
+
+
+
+            </ul>
+        </div>
+        
+        <div class="pull-right" >
+            <a class='nav-link admin-nav-link' style="color: grey;" href="#">
+                <i class="fa fa-cog fa-4x" onclick="return selectMe('SETTINGS', 'Podešavanja')" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="pull-right" >
+            <a class='nav-link admin-nav-link' style="color: grey;" href="#">
+                <i class="fa fa-calendar fa-4x" onclick="return selectMe('CALENDAR', 'Vrati stranicu na odredjeni datum',
+                    '2017-10-29', '2017-10-30')" aria-hidden="true"></i>
+            </a>
+        </div>
+        
+    </nav>
+    {% if error is defined and error != null %}
+        <div class="alert alert-danger" role="alert">
+            {{ error | raw }}
+        </div>
+    {% elseif success is defined and success != null %}
+        <div class="alert alert-success" role="alert">
+            {{ success | raw }}
+        </div>
+    {% endif %}
+    <div class="content">
+{% endblock %}

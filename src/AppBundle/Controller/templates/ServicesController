@@ -1,0 +1,16 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: hasan
+ * Date: 27.09.17
+ * Time: 18:51
+ */
+
+
+namespace  AppBundle\Controller;
+
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
+class ServicesController extends Controller {

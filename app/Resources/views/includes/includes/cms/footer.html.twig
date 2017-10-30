@@ -1,0 +1,21 @@
+{% block footer %}
+    </div>
+     {%  import "includes/includes/cms/macro.html.twig" as forms %} 
+        <nav class="navbar fixed-bottom navbar-light bg-light">
+             {{ forms.cmsElement() }} 
+             <div onClick='return selectMe("FOOTER", "Tekst futera");'> 
+            <small class="text-muted">2017, Sva prava zadrzana</small>
+             </div> 
+             {{ forms.cmsElementEndTag() }} 
+        </nav>
+        <script src="{{ asset("js/vendor/dev/jquery.js") }}"></script>
+        <script src="{{ asset("js/vendor/dev/popper.js") }}"></script>
+        <script src="{{ asset("js/vendor/dev/bootstrap.js") }}"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src={{ asset("js/vendor/ie10-viewport-bug-workaround.js") }}></script>
+        <script src={{ asset("js/script.js") }}></script>
+         <script src="{{ asset("js/scriptCms.js") }}"></script> 
+         <script src="{{ asset("js/addService.js") }}"></script> 
+        </body>
+    </html>
+{% endblock footer %}
