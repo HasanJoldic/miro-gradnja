@@ -101,6 +101,7 @@ class CmsMainController extends Controller {
                     move_uploaded_file($faviconImage->getPathname(), $file);
                     $imagick = new Imagick($file);
                     $imagick->thumbnailImage(32, 32);
+                    $imagick->setImageFormat("ico");
                     file_put_contents($file, $imagick->getImageBlob());
                     $dbRow->setFaviconImage($uuid);
                 }
@@ -119,10 +120,11 @@ class CmsMainController extends Controller {
                     $uuid = Uuid::uuid4();
 
                     $file = __DIR__ . $this->toBaseDir .
-                        "web/static/images/all/" . $uuid.".png";
+                        "web/static/images/all/" . $uuid.".jpg";
                     move_uploaded_file($brandImage->getPathname(), $file);
                     $imagick = new Imagick($file);
                     $imagick->thumbnailImage(300,  300, true);
+                    $imagick->setImageFormat("jpg");
                     file_put_contents($file, $imagick->getImageBlob());
                     $dbRow->setBrandImage($uuid);
                 }
