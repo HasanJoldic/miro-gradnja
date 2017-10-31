@@ -130,7 +130,7 @@ const constants = {
     GALLERY_IMAGE:
     '<form autocomplete="off" onsubmit="onSubmitGalleryImage(event, \'__insertUid__\')">' +
     '    <img id="gallery-image-input-field-image" width="100%"' +
-    ' src="http://localhost:8000/static/images/all/__insertUid__.jpg">' +
+    ' src="http://miro-gradnja.hr/static/images/all/__insertUid__.jpg">' +
     '    <fieldset style="margin-top: 10px" class="form-group">\n' +
     '        <input type="file" class="form-control-file" id="gallery-image-input-field"' +
     ' onchange="onGalleryImageChange(event)">' +
