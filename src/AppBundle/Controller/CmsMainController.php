@@ -492,21 +492,23 @@ str_replace("__insertMaxDate__", $lastDate, $headerTemplate)))));
 "id='".$galleryImagesKeys[0]."' cms#}", $__insertImageCards__Template))));
             $__insertImageCards__ = $__insertImageCards__.str_replace(
 "__insertUid__", $galleryImagesKeys[0], $addImageButtonTemplate);
-        }
-        $__insertSlideIndex__++;
-        for ($i = 1; $i < sizeof($galleryImages); $i++) {
-            $__insertImageCards__ = $__insertImageCards__ ."\n".str_replace(
-"__insertSlideIndex__", $__insertSlideIndex__, str_replace(
-"__insertImageUid__", $galleryImagesKeys[$i], str_replace(
-"__insertImageText__", $galleryImagesValues[$i], str_replace(
-"{#cms {{ forms.cmsElementThumbnail() }} cms#}", "{#cms {{ forms.cmsElementThumbnail() }} ".
-"id='".$galleryImagesKeys[$i]."' cms#}", $__insertImageCards__Template))));
-            $__insertImageCards__ = $__insertImageCards__.str_replace(
-                    "__insertUid__", $galleryImagesKeys[$i], $addImageButtonTemplate);
-            if (($i+1) == sizeof($galleryImages)) {
-                $__insertImageCards__ = $__insertImageCards__.'</div></div>';
-            }
             $__insertSlideIndex__++;
+            for ($i = 1; $i < sizeof($galleryImages); $i++) {
+                $__insertImageCards__ = $__insertImageCards__ . "\n" . str_replace(
+                        "__insertSlideIndex__", $__insertSlideIndex__, str_replace(
+                        "__insertImageUid__", $galleryImagesKeys[$i], str_replace(
+                        "__insertImageText__", $galleryImagesValues[$i], str_replace(
+                        "{#cms {{ forms.cmsElementThumbnail() }} cms#}", "{#cms {{ forms.cmsElementThumbnail() }} " .
+                        "id='" . $galleryImagesKeys[$i] . "' cms#}", $__insertImageCards__Template))));
+                $__insertImageCards__ = $__insertImageCards__ . str_replace(
+                        "__insertUid__", $galleryImagesKeys[$i], $addImageButtonTemplate);
+                if (($i + 1) == sizeof($galleryImages)) {
+                    $__insertImageCards__ = $__insertImageCards__ . '</div></div>';
+                }
+                $__insertSlideIndex__++;
+            }
+        } else {
+            $__insertImageCards__ = $__insertImageCards__."</div>";
         }
 
         $template = str_replace(
