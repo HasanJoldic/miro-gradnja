@@ -258,6 +258,8 @@ class CmsMainController extends Controller {
 
         $databaseHelper = $this->get(DatabaseHelper::class);
         $databaseHelper->removeUnusedImages();
+
+        exec("php /var/www/miro-gradnja/bin/console cache:clear --env=prod --no-debug");
     }
 
     private function updateViewsForGlobalVariables($date, $em) {
