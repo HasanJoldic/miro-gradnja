@@ -441,82 +441,84 @@ str_replace("__insertMaxDate__", $lastDate, $headerTemplate)))));
     private function updateViewsForGalleryImages($date, $em) {
         $dbRow = $em->getRepository(GalleryImages::class)->findOneByDate($date);
 
+        $template = file_get_contents(__DIR__
+            . "/../../../app/Resources/views/views/templates/gallery/gallery.html.twig");
+        $galleryImages = array();
         if ($dbRow) {
-            $template = file_get_contents(__DIR__
-                . "/../../../app/Resources/views/views/templates/gallery/gallery.html.twig");
             $galleryImages = $dbRow->getImages();
-            $galleryImagesKeys = array_keys($galleryImages);
-            $galleryImagesValues = array_values($galleryImages);
+        }
+        $galleryImagesKeys = array_keys($galleryImages);
+        $galleryImagesValues = array_values($galleryImages);
 
-            $__insertCarouselIndicators__ = "";
-            if (sizeof($galleryImages) > 0) {
-                $__insertCarouselIndicators__ = $__insertCarouselIndicators__.'<li class="active"></li>';
-            }
-            for ($i = 1; $i < sizeof($galleryImages); $i++) {
-                $__insertCarouselIndicators__ = $__insertCarouselIndicators__.'<li></li>';
-            }
+        $__insertCarouselIndicators__ = "";
+        if (sizeof($galleryImages) > 0) {
+            $__insertCarouselIndicators__ = $__insertCarouselIndicators__.'<li class="active"></li>';
+        }
+        for ($i = 1; $i < sizeof($galleryImages); $i++) {
+            $__insertCarouselIndicators__ = $__insertCarouselIndicators__.'<li></li>';
+        }
 
-            $__insertCarouselItems__ = "";
-            $__insertCarouselItems__Template = file_get_contents(__DIR__
-                . "/../../../app/Resources/views/views/templates/gallery/carouselItemTemplate.html.twig");
-            if (sizeof($galleryImages) > 0) {
-                $__insertCarouselItems__ = $__insertCarouselItems__ ."\n". str_replace(
+        $__insertCarouselItems__ = "";
+        $__insertCarouselItems__Template = file_get_contents(__DIR__
+            . "/../../../app/Resources/views/views/templates/gallery/carouselItemTemplate.html.twig");
+        if (sizeof($galleryImages) > 0) {
+            $__insertCarouselItems__ = $__insertCarouselItems__ ."\n". str_replace(
 "__insertIsActive__", "active", str_replace(
 "__insertCarouselImage__", $galleryImagesKeys[0], str_replace(
 "__insertCarouselText__", $galleryImagesValues[0], $__insertCarouselItems__Template)));
-            }
-            for ($i = 1; $i < sizeof($galleryImages); $i++) {
-                $__insertCarouselItems__ = $__insertCarouselItems__ ."\n".str_replace(
+        }
+        for ($i = 1; $i < sizeof($galleryImages); $i++) {
+            $__insertCarouselItems__ = $__insertCarouselItems__ ."\n".str_replace(
 "__insertIsActive__", "", str_replace(
 "__insertCarouselImage__", $galleryImagesKeys[$i], str_replace(
 "__insertCarouselText__", $galleryImagesValues[$i], $__insertCarouselItems__Template)));
-            }
+        }
 
-            $__insertSlideIndex__ = 0;
-            $addImageButtonTemplate = file_get_contents(__DIR__
-                . "/../../../app/Resources/views/views/templates/gallery/addImageButton.html.twig");
-            $__insertImageCards__ = str_replace(
+        $__insertSlideIndex__ = 0;
+        $addImageButtonTemplate = file_get_contents(__DIR__
+            . "/../../../app/Resources/views/views/templates/gallery/addImageButton.html.twig");
+        $__insertImageCards__ = str_replace(
 "__insertUid__", Uuid::uuid4(), $addImageButtonTemplate);
-            $__insertImageCards__Template = file_get_contents(__DIR__
-                . "/../../../app/Resources/views/views/templates/gallery/imageCardTemplate.html.twig");
-            if (sizeof($galleryImages) > 0) {
-                $__insertImageCards__ = $__insertImageCards__ ."\n". str_replace(
+        $__insertImageCards__Template = file_get_contents(__DIR__
+            . "/../../../app/Resources/views/views/templates/gallery/imageCardTemplate.html.twig");
+        if (sizeof($galleryImages) > 0) {
+            $__insertImageCards__ = $__insertImageCards__ ."\n". str_replace(
 "__insertSlideIndex__", $__insertSlideIndex__, str_replace(
 "__insertImageUid__", $galleryImagesKeys[0], str_replace(
 "__insertImageText__", $galleryImagesValues[0], str_replace(
 "{#cms {{ forms.cmsElementThumbnail() }} cms#}", "{#cms {{ forms.cmsElementThumbnail() }}".
 "id='".$galleryImagesKeys[0]."' cms#}", $__insertImageCards__Template))));
-                $__insertImageCards__ = $__insertImageCards__.str_replace(
+            $__insertImageCards__ = $__insertImageCards__.str_replace(
 "__insertUid__", $galleryImagesKeys[0], $addImageButtonTemplate);
-            }
-            $__insertSlideIndex__++;
-            for ($i = 1; $i < sizeof($galleryImages); $i++) {
-                $__insertImageCards__ = $__insertImageCards__ ."\n".str_replace(
+        }
+        $__insertSlideIndex__++;
+        for ($i = 1; $i < sizeof($galleryImages); $i++) {
+            $__insertImageCards__ = $__insertImageCards__ ."\n".str_replace(
 "__insertSlideIndex__", $__insertSlideIndex__, str_replace(
 "__insertImageUid__", $galleryImagesKeys[$i], str_replace(
 "__insertImageText__", $galleryImagesValues[$i], str_replace(
 "{#cms {{ forms.cmsElementThumbnail() }} cms#}", "{#cms {{ forms.cmsElementThumbnail() }} ".
 "id='".$galleryImagesKeys[$i]."' cms#}", $__insertImageCards__Template))));
-                $__insertImageCards__ = $__insertImageCards__.str_replace(
-                        "__insertUid__", $galleryImagesKeys[$i], $addImageButtonTemplate);
-                if (($i+1) == sizeof($galleryImages)) {
-                    $__insertImageCards__ = $__insertImageCards__.'</div></div>';
-                }
-                $__insertSlideIndex__++;
+            $__insertImageCards__ = $__insertImageCards__.str_replace(
+                    "__insertUid__", $galleryImagesKeys[$i], $addImageButtonTemplate);
+            if (($i+1) == sizeof($galleryImages)) {
+                $__insertImageCards__ = $__insertImageCards__.'</div></div>';
             }
+            $__insertSlideIndex__++;
+        }
 
-            $template = str_replace(
+        $template = str_replace(
 "__insertCarouselIndicators__", $__insertCarouselIndicators__, str_replace(
 "__insertCarouselItems__", $__insertCarouselItems__, str_replace(
 "__insertImageCards__", $__insertImageCards__, $template)));
 
-            file_put_contents(__DIR__ . "/../../../app/Resources/views/views/web/gallery.html.twig",
+        file_put_contents(__DIR__ . "/../../../app/Resources/views/views/web/gallery.html.twig",
 str_replace("{#web", "",
 str_replace("web#}", "", $template)));
-            file_put_contents(__DIR__ . "/../../../app/Resources/views/views/cms/gallery.html.twig",
+        file_put_contents(__DIR__ . "/../../../app/Resources/views/views/cms/gallery.html.twig",
 str_replace("{#cms", "",
 str_replace("cms#}", "", $template)));
-        }
+
     }
 
     private function updateViewsForContactVariables($date, $em) {
