@@ -20,7 +20,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Ramsey\Uuid\Uuid;
-use Imagick;
 use Symfony\Component\Validator\Constraints\Date;
 
 class CmsMainController extends Controller {
@@ -99,10 +98,6 @@ class CmsMainController extends Controller {
                     $uuid = $uuid->toString();
                     $file = __DIR__ ."/../../../web/static/images/all/" . $uuid.".ico";
                     move_uploaded_file($faviconImage->getPathname(), $file);
-                    $imagick = new Imagick($file);
-                    $imagick->thumbnailImage(32, 32);
-                    $imagick->setImageFormat("ico");
-                    file_put_contents($file, $imagick->getImageBlob());
                     $dbRow->setFaviconImage($uuid);
                 }
             }
@@ -122,9 +117,6 @@ class CmsMainController extends Controller {
 
                     $file = __DIR__ . "/../../../web/static/images/all/" . $uuid.".png";
                     move_uploaded_file($brandImage->getPathname(), $file);
-                    // $imagick = new Imagick($file);
-                    // $imagick->setImageFormat("png");
-                    // file_put_contents($file, $imagick->getImageBlob());
                     $dbRow->setBrandImage($uuid);
                 }
             }
@@ -154,10 +146,6 @@ class CmsMainController extends Controller {
                     $uuid = $uuid->toString();
                     $file = __DIR__ . "/../../../web/static/images/all/" . $uuid.".jpg";
                     move_uploaded_file($imageFiles["galleryImageFile".$i]->getPathname(), $file);
-                    $imagick = new Imagick($file);
-                    $imagick->thumbnailImage(400,  400, true);
-                    file_put_contents(str_replace(".jpg", "THUMBNAIL.jpg", $file),
-                        $imagick->getImageBlob());
                     $galleryImages[$uuid] = $textVariables["galleryImageText".$i];
                 }
                 $i++;
