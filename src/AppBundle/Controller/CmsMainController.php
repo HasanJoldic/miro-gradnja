@@ -25,8 +25,6 @@ use Symfony\Component\Validator\Constraints\Date;
 
 class CmsMainController extends Controller {
 
-    private $toBaseDir = "/../../../";
-
     /**
      * @Route("/cms/set-cms/", name="cms_set")
      * @Method({"POST"})
@@ -37,7 +35,8 @@ class CmsMainController extends Controller {
         $date =  $em ->getRepository(\AppBundle\Entity\Date::class)->findOneByDate(date_create());
 
         $this->setVariables($request, $date);
-        $this->updateViewsFromDatabase($this, $date);
+        $dbHelper = $this->get(DatabaseHelper::class);
+        $this->updateViewsFromDatabase($em, $dbHelper, $date);
 
         return $this -> redirectToRoute("cms_index");
     }
@@ -52,7 +51,8 @@ class CmsMainController extends Controller {
         $date =  $em ->getRepository(\AppBundle\Entity\Date::class)->findOneByDate(date_create());
 
         $this->setVariables($request, $date);
-        $this->updateViewsFromDatabase($this, $date);
+        $dbHelper = $this->get(DatabaseHelper::class);
+        $this->updateViewsFromDatabase($em, $dbHelper, $date);
 
         return $this -> redirect($request->headers->get("referer"));
     }
@@ -96,8 +96,8 @@ class CmsMainController extends Controller {
             if ($faviconImage) {
                 if ($faviconImage->getClientSize() > 0) {
                     $uuid = Uuid::uuid4();
-                    $file = __DIR__ . $this->toBaseDir .
-                        "web/static/images/all/" . $uuid.".ico";
+                    $uuid = $uuid->toString();
+                    $file = __DIR__ ."/../../../web/static/images/all/" . $uuid.".ico";
                     move_uploaded_file($faviconImage->getPathname(), $file);
                     $imagick = new Imagick($file);
                     $imagick->thumbnailImage(32, 32);
@@ -118,9 +118,9 @@ class CmsMainController extends Controller {
             if ($brandImage) {
                 if ($brandImage->getClientSize() > 0) {
                     $uuid = Uuid::uuid4();
+                    $uuid = $uuid->toString();
 
-                    $file = __DIR__ . $this->toBaseDir .
-                        "web/static/images/all/" . $uuid.".jpg";
+                    $file = __DIR__ . "/../../../web/static/images/all/" . $uuid.".jpg";
                     move_uploaded_file($brandImage->getPathname(), $file);
                     $imagick = new Imagick($file);
                     $imagick->thumbnailImage(300,  300, true);
@@ -152,14 +152,14 @@ class CmsMainController extends Controller {
                         $textVariables["galleryImageText".$i];
                 } else {
                     $uuid = Uuid::uuid4();
-                    $file = __DIR__ . $this->toBaseDir .
-                        "web/static/images/all/" . $uuid.".jpg";
+                    $uuid = $uuid->toString();
+                    $file = __DIR__ . "/../../../web/static/images/all/" . $uuid.".jpg";
                     move_uploaded_file($imageFiles["galleryImageFile".$i]->getPathname(), $file);
                     $imagick = new Imagick($file);
                     $imagick->thumbnailImage(400,  400, true);
                     file_put_contents(str_replace(".jpg", "THUMBNAIL.jpg", $file),
                         $imagick->getImageBlob());
-                    $galleryImages[$uuid->toString()] = $textVariables["galleryImageText".$i];
+                    $galleryImages[$uuid] = $textVariables["galleryImageText".$i];
                 }
                 $i++;
             }
@@ -249,8 +249,8 @@ class CmsMainController extends Controller {
     }
 
 
-    public function updateViewsFromDatabase($self, $date) {
-        $em = $self->getDoctrine()->getManager();
+    public function updateViewsFromDatabase($em, $dbHelper, $date) {
+        // $em = $self->getDoctrine()->getManager();
 
         $this->updateViewsForGlobalVariables($date, $em);
         $this->updateViewsForAboutUsVariables($date, $em);
@@ -258,8 +258,9 @@ class CmsMainController extends Controller {
         $this->updateViewsForGalleryImages($date, $em);
         $this->updateViewsForServiceItems($date, $em);
 
-        $databaseHelper = $self->get(DatabaseHelper::class);
-        $databaseHelper->removeUnusedImages();
+        //$databaseHelper = $self->get(DatabaseHelper::class);
+        //$databaseHelper->removeUnusedImages();
+        $dbHelper->removeUnusedImages();
 
         exec("php /var/www/miro-gradnja/bin/console cache:clear --env=prod --no-debug");
     }

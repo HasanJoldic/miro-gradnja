@@ -10,6 +10,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Date;
 use AppBundle\Entity\Service;
+use AppBundle\Service\DatabaseHelper;
 use Doctrine\ORM\Query\Expr\Math;
 use Ramsey\Uuid\Uuid;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -100,7 +101,8 @@ class ServiceAddController extends Controller {
 
         $date = $em->getRepository(Date::class)->findOneByDate(date_create());
         $cmsHomepageController = new CmsMainController();
-        $cmsHomepageController->updateViewsFromDatabase($this, $date);
+        $dbHelper = $this->get(DatabaseHelper::class);
+        $cmsHomepageController->updateViewsFromDatabase($em, $dbHelper, $date);
 
         return $this->redirectToRoute("service_add", [
             "error" => $error,
@@ -143,7 +145,8 @@ class ServiceAddController extends Controller {
 
         $date = $em->getRepository(Date::class)->findOneByDate(date_create());
         $cmsHomepageController = new CmsMainController();
-        $cmsHomepageController->updateViewsFromDatabase($this, $date);
+        $dbHelper = $this->get(DatabaseHelper::class);
+        $cmsHomepageController->updateViewsFromDatabase($em, $dbHelper, $date);
 
         return $this->redirectToRoute("services", [
             "error" => $error,

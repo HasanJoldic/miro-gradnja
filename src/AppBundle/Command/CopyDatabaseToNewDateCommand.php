@@ -8,12 +8,14 @@
 
 namespace AppBundle\Command;
 
+use AppBundle\Controller\CmsMainController;
 use AppBundle\Entity\AboutUs;
 use AppBundle\Entity\Contact;
 use AppBundle\Entity\Date;
 use AppBundle\Entity\GalleryImages;
 use AppBundle\Entity\GlobalVariables;
 use AppBundle\Entity\Service;
+use AppBundle\Service\DatabaseHelper;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -84,5 +86,10 @@ class CopyDatabaseToNewDateCommand extends ContainerAwareCommand
         }
 
         $em->flush();
+        $em = $this->getContainer()->get("doctrine.orm.entity_manager");
+
+        $cmsHomepageController = new CmsMainController();
+        $dbHelper = $this->getContainer()->get("database_helper");
+        $cmsHomepageController->updateViewsFromDatabase($em, $dbHelper, $currentDate);
     }
 }

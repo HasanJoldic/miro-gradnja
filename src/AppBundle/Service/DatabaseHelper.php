@@ -71,7 +71,6 @@ class DatabaseHelper
 
     public function removeUnusedImages()
     {
-        $__DIR__ = "../web/static/images/all/";
 
         $allUidsInDb = array();
         $em = $this->em;
@@ -97,6 +96,7 @@ class DatabaseHelper
             }
         }
 
+        $__DIR__ = __DIR__. "/../../../web/static/images/all/";
         $files = scandir($__DIR__);
         $files = array_diff($files, [".", ".."]);
 
