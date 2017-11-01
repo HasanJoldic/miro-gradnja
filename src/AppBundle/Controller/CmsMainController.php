@@ -122,9 +122,9 @@ class CmsMainController extends Controller {
 
                     $file = __DIR__ . "/../../../web/static/images/all/" . $uuid.".png";
                     move_uploaded_file($brandImage->getPathname(), $file);
-                    $imagick = new Imagick($file);
-                    $imagick->setImageFormat("png");
-                    file_put_contents($file, $imagick->getImageBlob());
+                    // $imagick = new Imagick($file);
+                    // $imagick->setImageFormat("png");
+                    // file_put_contents($file, $imagick->getImageBlob());
                     $dbRow->setBrandImage($uuid);
                 }
             }
