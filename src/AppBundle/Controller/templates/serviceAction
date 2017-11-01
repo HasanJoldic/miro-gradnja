@@ -1,5 +1,6 @@
     /**
      * @Route("/usluge/__insertUrl__/")
+     * @Method({"GET"})
      * @param Request $request
      */
 
@@ -9,6 +10,7 @@
 
     /**
      * @Route("/cms/usluge/__insertUrl__/")
+     * @Method({"GET"})
      * @param Request $request
      */
 

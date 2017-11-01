@@ -10,6 +10,7 @@
 <a class="list-group-item list-group-item-action" href="#sidebar-item-0">naslovcicsdasdasdas</a>
 <a class="list-group-item list-group-item-action" href="#sidebar-item-1">asfasf</a>
 <a class="list-group-item list-group-item-action" href="#sidebar-item-2">asfasf</a>
+<a class="list-group-item list-group-item-action" href="#sidebar-item-3">sagag</a>
 
                     </nav>
                 </nav>
@@ -19,7 +20,7 @@
  <div onClick='return selectMe("JUMBOTRON", "Promijeni url ili izbrisi element",
     "44441sd", "naslovcicsdasdasdas", true);'> 
 <div id="sidebar-item-0">
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-color: white">
         <h1>naslovcicsdasdasdas</h1>
         <img style="max-height: 800px; max-width: 100%"
              src="{{ asset("static/images/all/3318c418-78b5-4055-88e4-be5b848eac34.jpg") }}">
@@ -36,7 +37,7 @@
  <div onClick='return selectMe("JUMBOTRON", "Promijeni url ili izbrisi element",
     "newurl", "asfasf", true);'> 
 <div id="sidebar-item-1">
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-color: white">
         <h1>asfasf</h1>
         <img style="max-height: 800px; max-width: 100%"
              src="{{ asset("static/images/all/f976c8f3-0328-4a9a-844f-09dd6a8c6eae.jpg") }}">
@@ -53,13 +54,30 @@
  <div onClick='return selectMe("JUMBOTRON", "Promijeni url ili izbrisi element",
     "34t3qgggas", "asfasf", true);'> 
 <div id="sidebar-item-2">
-    <div class="jumbotron">
+    <div class="jumbotron" style="background-color: white">
         <h1>asfasf</h1>
         <img style="max-height: 800px; max-width: 100%"
              src="{{ asset("static/images/all/99cc5f9d-fea7-4f0f-a54d-e5a3629004b0.jpg") }}">
         <p class="lead">
             <a style="margin: -100px 0 0 20px;" class="btn btn-primary btn-lg"
                href="/cms/usluge/34t3qgggas"
+               role="button">Procitaj vise
+            </a>
+        </p>
+    </div>
+</div>
+ </div> 
+ {{ forms.cmsElementEndTag() }}  {{ forms.cmsElement() }} 
+ <div onClick='return selectMe("JUMBOTRON", "Promijeni url ili izbrisi element",
+    "awegaegawegae", "sagag", true);'> 
+<div id="sidebar-item-3">
+    <div class="jumbotron" style="background-color: white">
+        <h1>sagag</h1>
+        <img style="max-height: 800px; max-width: 100%"
+             src="{{ asset("static/images/all/1b2a20f7-30a0-4d39-a0b4-ecd1479bb20b.jpg") }}">
+        <p class="lead">
+            <a style="margin: -100px 0 0 20px;" class="btn btn-primary btn-lg"
+               href="/cms/usluge/awegaegawegae"
                role="button">Procitaj vise
             </a>
         </p>

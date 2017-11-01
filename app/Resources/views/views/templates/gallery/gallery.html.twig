@@ -33,13 +33,16 @@ __insertCarouselItems__
            onchange="onSubmitGalleryImageAndCreateThumbnail(event)"> cms#}
     {#cms <input id="gallery-images-text-input" type="text" hidden="hidden" > cms#}
 
-    <div class="container">
+    {#cms <div class="container"> cms#}
+
+    <div class="container" style="padding-bottom: 100px">
     <div style="margin-top: 50px;" class="row">
 __insertImageCards__
+    </div></div>
 
-
-    {#cms <button style:"style="margin-top: 100px;" type="submit" id="submit"
+    {#cms <button style="margin-top: 100px;" type="submit" id="submit"
     class="btn btn-primary pull-right">Zapamti promjene</button></div>
     cms#}
+    {#cms </div> cms#}
 {#cms </form> cms#}
 {%  endblock body %}

@@ -1,9 +1,17 @@
 body {
     position: relative;
+    background-image: url("/static/images/background.jpg");
+    background-size: cover;
 }
 
 .cms-element {
     border: solid 3px transparent;
+}
+
+.container {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .cms-element:hover {
@@ -162,4 +170,8 @@ body {
 }
 .carousel-control-next-icon {
     background-color: black;
+}
+
+a.nav-link.active {
+    border-bottom: thick solid red;
 }

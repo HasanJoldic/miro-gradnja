@@ -244,7 +244,7 @@ class CmsMainController extends Controller {
         $this->updateViewsForContactVariables($date, $em);
         $this->updateViewsForGalleryImages($date, $em);
         $this->updateViewsForServiceItems($date, $em);
-
+        $this->updateOtherViews();
         //$databaseHelper = $self->get(DatabaseHelper::class);
         //$databaseHelper->removeUnusedImages();
         $dbHelper->removeUnusedImages();
@@ -492,9 +492,7 @@ str_replace("__insertMaxDate__", $lastDate, $headerTemplate)))));
                         "id='" . $galleryImagesKeys[$i] . "' cms#}", $__insertImageCards__Template))));
                 $__insertImageCards__ = $__insertImageCards__ . str_replace(
                         "__insertUid__", $galleryImagesKeys[$i], $addImageButtonTemplate);
-                if (($i + 1) == sizeof($galleryImages)) {
-                    $__insertImageCards__ = $__insertImageCards__ . '</div></div>';
-                }
+
                 $__insertSlideIndex__++;
             }
         } else {
@@ -558,5 +556,16 @@ str_replace("cms#}", "", $template)));
                 str_replace("{#cms", "",
                     str_replace("cms#}", "", $template)));
         }
+    }
+
+    private function updateOtherViews() {
+        $template = file_get_contents(__DIR__
+            . "/../../../app/Resources/views/views/templates/index.html.twig");
+        file_put_contents(__DIR__ . "/../../../app/Resources/views/views/web/index.html.twig",
+            str_replace("{#web", "",
+                str_replace("web#}", "", $template)));
+        file_put_contents(__DIR__ . "/../../../app/Resources/views/views/cms/index.html.twig",
+            str_replace("{#cms", "",
+                str_replace("cms#}", "", $template)));
     }
 }
