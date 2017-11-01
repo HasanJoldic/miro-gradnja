@@ -43,3 +43,5 @@
 
 # Embedded web-server pid file
 /.web-server-pid
+
+/app/Resources/views/views/cms/services.html.twig
