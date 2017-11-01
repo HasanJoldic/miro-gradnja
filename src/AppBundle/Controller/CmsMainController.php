@@ -120,11 +120,10 @@ class CmsMainController extends Controller {
                     $uuid = Uuid::uuid4();
                     $uuid = $uuid->toString();
 
-                    $file = __DIR__ . "/../../../web/static/images/all/" . $uuid.".jpg";
+                    $file = __DIR__ . "/../../../web/static/images/all/" . $uuid.".png";
                     move_uploaded_file($brandImage->getPathname(), $file);
                     $imagick = new Imagick($file);
-                    $imagick->thumbnailImage(300,  300, true);
-                    $imagick->setImageFormat("jpg");
+                    $imagick->setImageFormat("png");
                     file_put_contents($file, $imagick->getImageBlob());
                     $dbRow->setBrandImage($uuid);
                 }
