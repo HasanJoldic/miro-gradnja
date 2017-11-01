@@ -257,15 +257,15 @@ class CmsMainController extends Controller {
         $allDates = $em->getRepository(\AppBundle\Entity\Date::class)->findAll();
         $firstDate = null;
         $lastDate = -1;
-        foreach ($allDates as $key=> $value) {
+        for ($i = 0; $i < sizeof($allDates); $i++) {
             if (!$firstDate) {
-                $firstDate = $value->getId();
+                $firstDate = $allDates[$i]->getId();
             }
-            if ($value->getId() < $firstDate) {
-                $firstDate = $value->getId();
+            if ($allDates[$i]->getId() < $firstDate) {
+                $firstDate = $allDates[$i]->getId();
             }
-            if ($value->getId() > $lastDate) {
-                $lastDate = $value->getId();
+            if ($allDates[$i]->getId() > $lastDate && !(($i+1) == sizeof($allDates))) {
+                $lastDate = $allDates[$i]->getId();
             }
         }
         $firstDate = $em->getRepository(\AppBundle\Entity\Date::class)->find($firstDate)->getDate()->format("Y-m-d");
