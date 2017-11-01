@@ -34,6 +34,7 @@ class MainController extends Controller {
     {
         return $this -> render("views/web/index.html.twig");
     }
+
     /**
      * @Route("/cms/", name="cms_index")
      * @Method({"GET"})
@@ -90,7 +91,13 @@ class MainController extends Controller {
 
     public function contactAction(Request $request)
     {
-        return $this -> render("views/web/contact.html.twig");
+        $error = $request->query->get("error");
+        $success = $request->query->get("success");
+
+        return $this -> render("views/web/contact.html.twig", [
+            "error"=> $error,
+            "success"=> $success
+        ]);
     }
 
     /**
