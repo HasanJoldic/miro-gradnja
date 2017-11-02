@@ -50,17 +50,29 @@ class GlobalVariables
     private $footerText;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="phone_number", type="string", nullable=false)
+     */
+    private $phoneNumber;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="second_phone_number", type="string", nullable=false)
+     */
+    private $secondPhoneNumber;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Date", inversedBy="variables")
      * @ORM\JoinColumn(name="date_id", referencedColumnName="id", unique=true)
      */
     private $date;
 
     /**
-     * Get id
-     *
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -130,6 +142,38 @@ class GlobalVariables
     }
 
     /**
+     * @return string
+     */
+    public function getPhoneNumber(): string
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param string $phoneNumber
+     */
+    public function setPhoneNumber(string $phoneNumber)
+    {
+        $this->phoneNumber = $phoneNumber;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSecondPhoneNumber()
+    {
+        return $this->secondPhoneNumber;
+    }
+
+    /**
+     * @param mixed $secondPhoneNumber
+     */
+    public function setSecondPhoneNumber($secondPhoneNumber)
+    {
+        $this->secondPhoneNumber = $secondPhoneNumber;
+    }
+
+    /**
      * @return mixed
      */
     public function getDate()
@@ -144,5 +188,6 @@ class GlobalVariables
     {
         $this->date = $date;
     }
+
 }
 

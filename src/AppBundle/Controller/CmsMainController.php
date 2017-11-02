@@ -90,6 +90,8 @@ class CmsMainController extends Controller {
             $pageTitle = $request->request->get("pageTitle");
             $brandImage = $request->files->get("brandImage");
             $footerText = $request->request->get("footerText");
+            $phoneNumber = $request->request->get("phone-number");
+            $secondPhoneNumber = $request->request->get("second-phone-number");
 
 
             if ($faviconImage) {
@@ -120,6 +122,15 @@ class CmsMainController extends Controller {
                     $dbRow->setBrandImage($uuid);
                 }
             }
+
+            if ($phoneNumber) {
+                $dbRow->setPhoneNumber($phoneNumber);
+            }
+
+            if ($secondPhoneNumber) {
+                $dbRow->setSecondPhoneNumber($secondPhoneNumber);
+            }
+
             $em->persist($dbRow);
             $em->flush();
         }
@@ -275,12 +286,19 @@ class CmsMainController extends Controller {
         if ($dbRow) {
             $headerTemplate = file_get_contents(__DIR__
                 . "/../../../app/Resources/views/includes/includesTemplates/header.html.twig");
+            $__insertSecondPhoneNumber__ = "";
+            if ($dbRow->getSecondPhoneNumber()) {
+                $__insertSecondPhoneNumber__ = '<p><i class="fa fa-phone" aria-hidden="true"></i>  '
+                    . '{#cms<small>cms#}'.$dbRow->getSecondPhoneNumber().'{#cms</small>cms#}</p>';
+            }
             $headerTemplate =
 str_replace("__insertFaviconImage__", $dbRow->getFaviconImage(),
 str_replace("__insertPageTitle__", $dbRow->getPageTitle(),
 str_replace("__insertBrandImage__", $dbRow->getBrandImage(),
+str_replace("__insertPhoneNumber__", $dbRow->getPhoneNumber(),
+str_replace("__insertSecondPhoneNumber__", $__insertSecondPhoneNumber__,
 str_replace("__insertMinDate__", $firstDate,
-str_replace("__insertMaxDate__", $lastDate, $headerTemplate)))));
+str_replace("__insertMaxDate__", $lastDate, $headerTemplate)))))));
 
             $footerTemplate = file_get_contents(__DIR__
                 . "/../../../app/Resources/views/includes/includesTemplates/footer.html.twig");

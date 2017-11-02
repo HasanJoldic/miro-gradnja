@@ -50,6 +50,10 @@ body {
     #sidebar {
         display: none;
     }
+
+    #phone-numbers {
+        display: none;
+    }
 }
 
 /* images slide in modal shows properly */

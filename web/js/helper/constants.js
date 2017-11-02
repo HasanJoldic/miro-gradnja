@@ -195,7 +195,18 @@ const constants = {
     '    <div  style="margin-top: 30px"><button type="submit" id="delete" class="btn btn-danger' +
     ' pull-left" onclick="removeElementsWithId(\'__insertUid__\')">Izbrisi element</button>' +
     '    <button type="submit" id="submit" onclick="$(\'#modal\').modal(\'hide\')" ' +
-    'class="btn btn-primary pull-right">Odustani</button></div>'
+    'class="btn btn-primary pull-right">Odustani</button></div>',
+
+    PHONE_NUMBER:
+    '<form method="POST" autocomplete="off" action="/cms/set-cms-soft/">\n' +
+        '    <fieldset class="form-group">\n' +
+    '        <input type="text" class="form-control-file" name="phone-number">' +
+    '    </fieldset> <!-- form-group -->\n' +
+    '    <fieldset class="form-group">\n' +
+    '        <input type="text" class="form-control-file" name="second-phone-number">' +
+    '    </fieldset> <!-- form-group -->\n' +
+    '        <button type="submit" id="submit" class="btn btn-primary pull-right">Zapamti promjene</button>' +
+    '</form>'
 };
 
 function post(path, params, method) {
