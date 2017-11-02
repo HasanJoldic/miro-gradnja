@@ -1,7 +1,7 @@
 {% block footer %}
     </div>
     {#cms {%  import "includes/includes/cms/macro.html.twig" as forms %} cms#}
-        <nav class="navbar fixed-bottom navbar-light bg-light">
+        <nav class="navbar fixed-bottom navbar-light bg-light" style="top: unset">
             {#cms {{ forms.cmsElement() }} cms#}
             {#cms <div onClick='return selectMe("FOOTER", "Tekst futera");'> cms#}
             <small class="text-muted">__insertFooterText__</small>
