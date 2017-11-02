@@ -31,6 +31,8 @@ services:
     form_authenticator:
         class: AppBundle\Security\FormAuthenticator
         arguments: ["@router"]
+    database_helper:
+        class: AppBundle\Service\DatabaseHelper
 
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
