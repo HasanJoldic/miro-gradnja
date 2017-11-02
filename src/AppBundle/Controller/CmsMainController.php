@@ -162,9 +162,7 @@ class CmsMainController extends Controller {
                 $i++;
             }
 
-            if ($galleryImages) {
-                $dbRow->setImages($galleryImages);
-            }
+            $dbRow->setImages($galleryImages);
 
             $em->persist($dbRow);
             $em->flush();
