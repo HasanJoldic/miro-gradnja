@@ -179,3 +179,9 @@ body {
 a.nav-link.active {
     border-bottom: thick solid red;
 }
+
+.custom-footer {
+    position:fixed;
+    width: 100%;
+    bottom: 0;"
+}
