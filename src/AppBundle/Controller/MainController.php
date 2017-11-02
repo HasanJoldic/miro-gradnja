@@ -60,8 +60,13 @@ class MainController extends Controller {
      * @param Request $request
      */
     public function cmsServicesAction(Request $request) {
+        $error = $request->query->get("error");
+        $success = $request->query->get("success");
 
-        return $this->render("views/cms/services.html.twig");
+        return $this->render("views/cms/services.html.twig", [
+            "error"=> $error,
+            "success"=> $success
+        ]);
     }
 
     /**

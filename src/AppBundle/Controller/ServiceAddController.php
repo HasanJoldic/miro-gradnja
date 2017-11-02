@@ -122,16 +122,11 @@ class ServiceAddController extends Controller {
 
         $url = $request->attributes->get("url");
 
-        $date = date_create();
         $em = $this->getDoctrine()->getManager();
-        $dbRow = $em
-            ->getRepository(Service::class)
-            ->createQueryBuilder("q")
-            ->join("q.date", "r")
-            ->where("r.date = (:date)")
-            ->setParameter("date", $date)
-            ->getQuery()
-            ->getResult();
+        $date =  $em ->getRepository(\AppBundle\Entity\Date::class)->findOneByDate(date_create());
+
+        $dbRow = $em->getRepository(Service::class)->findByDate($date);
+
 
         $serviceItem = null;
         foreach ($dbRow as $key=> $value) {
@@ -148,7 +143,9 @@ class ServiceAddController extends Controller {
         $dbHelper = $this->get(DatabaseHelper::class);
         $cmsHomepageController->updateViewsFromDatabase($em, $dbHelper, $date);
 
-        return $this->redirectToRoute("services", [
+        $success = "Element je uspjesno izbrisan.";
+
+        return $this->redirectToRoute("cms_services", [
             "error" => $error,
             "success" => $success
         ]);
