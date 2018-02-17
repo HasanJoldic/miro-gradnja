@@ -1,0 +1,223 @@
+body {
+    position: relative;
+    background-image: url("/images/background.jpg");
+    background-size: cover;
+}
+
+.cms-element {
+    border: solid 3px transparent;
+}
+
+.container {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.cms-element:hover {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    border: solid 3px black;
+    cursor: hand;
+    cursor: pointer;
+}
+
+.fa-4x:hover {
+    color: dodgerblue;
+}
+
+#map {
+    height: 400px;
+    background-color: grey;
+}
+
+.content {
+    margin-top: 40px;
+    margin-bottom: 200px;
+}
+
+/* sidebar fills the whole div col */
+#sidebar {
+    position: fixed;
+    width: 100%;
+}
+#sidebar nav {
+    width: 20%;
+}
+
+/* hide sidebar in smaller devices */
+@media (max-width: 992px) {
+    #sidebar {
+        display: none;
+    }
+
+    #phone-numbers {
+        display: none;
+    }
+}
+
+/* images slide in modal shows properly */
+.modal-lg .modal-body{
+    padding: 0;
+}
+.modal-lg .modal-content{
+    border: 0;
+}
+@media (min-width: 1200px) {
+    .modal-lg {
+        max-width: 1000px;
+    }
+}
+
+.file_button_container,
+.file_button_container input {
+    height: 160px;
+}
+.file_button_container input:hover {
+    cursor: hand;
+    cursor: pointer;
+}
+
+.hover-hand:hover {
+    cursor: hand;
+    cursor: pointer;
+}
+
+.add-image-button:hover {
+
+}
+
+.card-footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+/* center jumbotron vertically, but only on large devices */
+@media (min-width: 1200px) {
+    .container.index-container {
+        margin-top: 5%;
+    }
+}
+
+.index-col {
+    margin-bottom: 15px;
+}
+
+/* jumbotron background fills the whole div element */
+.index-jumbotron {
+    height: 100%;
+}
+
+.index-jumbotron .jumbotron {
+    border-radius: 2%;
+}
+
+/* reset text styles of tag element inside jumbotron */
+.index-jumbotron a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* footer text in jumbotron stick to bottom */
+.index-jumbotron .jumbotron-footer {
+    position: absolute;
+    bottom: 0;
+    font-size: 12px;
+    max-width: 80%;
+}
+
+/* jumbotron appear as button on hover */
+.index-jumbotron:hover{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 30px 0px grey;
+    -moz-box-shadow:    0px 0px 30px 0px grey;
+    box-shadow:         0px 0px 30px 0px grey;
+}
+
+/* jumbotrons in the landing page same height */
+.row-eq-height {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+}
+.index-jumbotron .jumbotron {
+    height: 100%;
+}
+
+/* Landing page text is smaller on smaller devices */
+@media (max-width: 992px) {
+    .index-jumbotron h1 {
+        font-size: 250%;
+    }
+}
+
+/* jumbotrons' heights 100% even if its wrapped with other div elements */
+.index-col div {
+    height: 100%;
+}
+.index-col div div {
+    height: 100%;
+}
+
+/* caption on carousel pictures can be read better */
+.carousel-caption {
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-control-prev-icon {
+    background-color: black;
+}
+.carousel-control-next-icon {
+    background-color: black;
+}
+
+a.nav-link.active {
+    border-bottom: thick solid red;
+}
+
+.input-group-addon {
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.card-footer {
+    padding: 20px 0 0 20px;
+}
+
+.card-footer p {
+    margin: 0;
+}
+
+.card-img-top {
+    max-height: 250px;
+    object-fit: cover;
+}
+
+@media screen and (min-width: 992px) {
+    .card-img-top {
+        max-height: 250px;
+        object-fit: cover;
+    }
+
+    .carousel-item {
+        text-align: center;
+    }
+
+    .carousel-item img {
+        max-height: 90vh;
+    }
+
+    .d-block {
+        display: unset !important;
+    }
+
+    .w-100 {
+        width: unset !important;
+    }
+}
