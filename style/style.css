@@ -227,7 +227,10 @@ a.nav-link.active {
     border-color: red;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus {
     background-color: red;
     border-color: red;
+    box-shadow: none;
 }
