@@ -221,3 +221,13 @@ a.nav-link.active {
         width: unset !important;
     }
 }
+
+.list-group-item.active {
+    background-color: red;
+    border-color: red;
+}
+
+.btn-primary {
+    background-color: red;
+    border-color: red;
+}
