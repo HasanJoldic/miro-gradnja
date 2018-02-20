@@ -10,8 +10,12 @@ body {
 
 .container {
     background-color: white;
-    padding: 10px;
+    // padding: 10px;
     border-radius: 10px;
+}
+
+.gallery-row {
+    padding-top: 10px;
 }
 
 .cms-element:hover {
@@ -102,6 +106,7 @@ body {
 
 .index-col {
     margin-bottom: 15px;
+    margin-top: 15px;
 }
 
 /* jumbotron background fills the whole div element */
